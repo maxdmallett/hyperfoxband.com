@@ -1,0 +1,7 @@
+
+v1.92 
+
+// DONE
+- Soundcloud social icon swapped to Instagram
+- New feed swapped from Twitter to Instagram
+- Added B&C acoustic video

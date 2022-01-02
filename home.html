@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133949266-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-133949266-1');
+		</script>
+
+		<title>HyperFox</title>
+		<link rel="icon" href="images/favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<meta name="description" content="HyperFox is a Punk/beatbox/dubstep band from Norwich, UK.">
+		<meta name="author" content="Max Mallett">
+		<meta name="theme-color" content="orange" />
+		<meta property="og:url" content="https://www.hyperfoxband.com/images/epic-01-thumb.jpg" />
+
+		<script src='js/jquery-2.1.4.min.js'></script>
+		<script src='js/main.js'></script>
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/styleHome.css">
+	
+	</head>
+	
+	<body>
+		
+		<div>
+		
+			<!-- BG slideshow -->
+			<div class="crossfade">
+				<figure></figure>
+				<figure></figure>
+				<figure></figure>
+				<figure></figure>
+			</div>
+		
+			<!-- Navigation bar -->
+			<div id="navBar">
+				<h1 id="navBarTitle" ><span id="h1Hyper">HYPER</span><span id="h1Fox">FOX</span></h1>
+			</div>
+			
+			<!-- Title -->
+			<h1 id="homePageTitle" ><span id="h1Hyper">HYPER</span><span id="h1Fox">FOX</span></h1>
+			
+		</div>
+		
+		<div id="play-control-holder">
+			<i id="audioIcon" class="fa"></i>
+		</div>
+		
+		
+		<!-- Footer (holds social media buttons) -->
+		<footer></footer>
+		
+		<script>
+			
+			$(document).ready(function () {
+			
+				var oPlayControl = $('#play-control-holder'),
+					oAudioIcon = $('#audioIcon'),
+					sPlayIcon = "&#xf01d;",
+					sPauseIcon = "&#xf28c;",
+					bPlaying = false,
+					oAudioElement = null,
+					sAudioSrc = 'audio/hyperfox-bbc-report.mp3';
+			
+				hidePlayControl();
+				populatePlayControl();
+				createAudioElement();
+				
+				function createAudioElement() {
+					oAudioElement = document.createElement('audio');
+					oAudioElement.setAttribute('src', sAudioSrc);
+					oAudioElement.addEventListener('canplay', function () {
+						showPlayControl();
+					});
+					oAudioElement.addEventListener('ended', function () {
+						pauseAudio();
+					});
+				}
+				
+				function hidePlayControl() {
+					oPlayControl.css('display', 'none');
+				}
+				
+				function showPlayControl() {
+					oPlayControl.css('display', 'block');
+				}
+			
+				function populatePlayControl() {
+						
+					// Populate icon
+					oAudioIcon.html(sPlayIcon);
+					
+					// Add event listener
+					oPlayControl.click(function () {
+						if (bPlaying) {
+							pauseAudio();
+						} else {
+							playAudio();
+						}
+					});
+				
+				}
+				
+				function playAudio() {
+					oAudioIcon.html(sPauseIcon);
+					oAudioElement.play();
+					bPlaying = true;
+				}
+				
+				function pauseAudio() {
+					oAudioIcon.html(sPlayIcon);
+					oAudioElement.pause();
+					bPlaying = false;
+				}
+				
+			});
+		
+		</script>
+	
+	</body>
+	
+	
+	
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
